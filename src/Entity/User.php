@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -55,6 +57,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Attendance::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $attendances;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Employee::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $employee;
+
+    public function __construct()
+    {
+        $this->attendances = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -189,4 +207,57 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Attendance[]
+     */
+    public function getAttendances(): Collection
+    {
+        return $this->attendances;
+    }
+
+    public function addAttendance(Attendance $attendance): self
+    {
+        if (!$this->attendances->contains($attendance)) {
+            $this->attendances[] = $attendance;
+            $attendance->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttendance(Attendance $attendance): self
+    {
+        if ($this->attendances->removeElement($attendance)) {
+            // set the owning side to null (unless already changed)
+            if ($attendance->getUser() === $this) {
+                $attendance->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEmployee(): ?Employee
+    {
+        return $this->employee;
+    }
+
+    public function setEmployee(Employee $employee): self
+    {
+        // set the owning side of the relation if necessary
+        if ($employee->getUser() !== $this) {
+            $employee->setUser($this);
+        }
+
+        $this->employee = $employee;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->firstName}  {$this->lastName}";
+    }
+
 }
