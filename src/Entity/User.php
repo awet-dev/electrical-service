@@ -112,7 +112,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
+        $this->password = password_hash($password,  PASSWORD_ARGON2ID);
 
         return $this;
     }
@@ -149,7 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setFirstName(string $firstName): self
     {
-        $this->firstName = $firstName;
+        $this->firstName = ucfirst($firstName);
 
         return $this;
     }
@@ -161,7 +161,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setLastName(string $lastName): self
     {
-        $this->lastName = $lastName;
+        $this->lastName = ucfirst($lastName);
 
         return $this;
     }
