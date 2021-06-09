@@ -24,12 +24,12 @@ class Attendance
     private $user;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $arriveAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $leaveAt;
 
@@ -60,30 +60,6 @@ class Attendance
         return $this;
     }
 
-    public function getArriveAt(): ?\DateTimeInterface
-    {
-        return $this->arriveAt;
-    }
-
-    public function setArriveAt(\DateTimeInterface $arriveAt): self
-    {
-        $this->arriveAt = $arriveAt;
-
-        return $this;
-    }
-
-    public function getLeaveAt(): ?\DateTimeInterface
-    {
-        return $this->leaveAt;
-    }
-
-    public function setLeaveAt(\DateTimeInterface $leaveAt): self
-    {
-        $this->leaveAt = $leaveAt;
-
-        return $this;
-    }
-
     public function getIsPresent(): ?bool
     {
         return $this->isPresent;
@@ -93,6 +69,11 @@ class Attendance
     {
         $this->isPresent = $isPresent;
 
+        if ($isPresent) {
+            $this->arriveAt = new \DateTime();
+        } else {
+            $this->leaveAt = new \DateTime();
+        }
         return $this;
     }
 
@@ -107,5 +88,7 @@ class Attendance
 
         return $this;
     }
+
+
 
 }

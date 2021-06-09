@@ -20,9 +20,7 @@ class AttendanceCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('user'),
-            DateTimeField::new('arriveAt'),
-            DateTimeField::new('leaveAt'),
+            AssociationField::new('user')->hideOnForm(),
             BooleanField::new('isPresent'),
             TextAreaField::new('absenceReason'),
         ];
