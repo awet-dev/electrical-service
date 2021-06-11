@@ -26,12 +26,12 @@ class Attendance
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $arriveAt;
+    private $checkedAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string")
      */
-    private $leaveAt;
+    private $status;
 
     /**
      * @ORM\Column(type="boolean")
@@ -48,14 +48,26 @@ class Attendance
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getCheckedAt(): ?\DateTimeInterface
     {
-        return $this->user;
+        return $this->checkedAt;
     }
 
-    public function setUser(?User $user): self
+    public function setCheckedAt(?\DateTimeInterface $checkedAt): self
     {
-        $this->user = $user;
+        $this->checkedAt = $checkedAt;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
@@ -67,13 +79,17 @@ class Attendance
 
     public function setIsPresent(bool $isPresent): self
     {
+        if ($isPresent) {
+            $this->setStatus('Present');
+        } else {
+            $this->setStatus('Absence');
+        }
+
+        $this->setCheckedAt(
+            new \DateTime()
+        );
         $this->isPresent = $isPresent;
 
-        if ($isPresent) {
-            $this->arriveAt = new \DateTime();
-        } else {
-            $this->leaveAt = new \DateTime();
-        }
         return $this;
     }
 
@@ -89,6 +105,17 @@ class Attendance
         return $this;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
 
 }

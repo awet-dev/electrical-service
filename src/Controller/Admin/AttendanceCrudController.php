@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use JetBrains\PhpStorm\NoReturn;
+use Symfony\Component\Routing\Annotation\Route;
 
 class AttendanceCrudController extends AbstractCrudController
 {
@@ -25,4 +27,5 @@ class AttendanceCrudController extends AbstractCrudController
             TextAreaField::new('absenceReason'),
         ];
     }
+
 }

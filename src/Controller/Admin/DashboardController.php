@@ -49,4 +49,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Attendance', 'fas fa-file', Attendance::class);
         yield MenuItem::linkToCrud('Employee', 'fas fa-briefcase', Employee::class);
     }
+
 }

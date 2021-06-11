@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} About {% endblock %}
+
+{% block body %}
+
+    <div class="bg-pages p-5">
+        <h2 class="float-end text-white">About</h2>
+    </div>
+
+    <div class="py-5 w-75 mx-auto">
+        <h2>ABOUT US</h2>
+        <p class="text-start">
+            Stapleton Electric is a family run company committed to providing every customer we service with an honest appraisal of your situation, the utmost in quality workmanship, and expertise that will leave you assured of the final result.
+        </p>
+
+        <p class="text-start">
+            Derek Stapleton, the owner has been a certified electrician since may 3, 2004 and has had his FSR (Field Safety Representative (FSR) Certificate of Qualification) since Dec 14, 2010.
+        </p>
+
+        <p class="text-start">
+            We offer an assortment of services landscape lighting, residential, high end residential, commercial, service, home audio entertainment. We stay up to date with code changes, service ethics, as well as new product options. We service the entire lower mainland and then some.
+        </p>
+    </div>
+
+    <div class="row w-75 mx-auto pb-5">
+        <img src="{{ asset('image/IMG_1.jpg') }}" alt="" class="col">
+        <img src="{{ asset('image/IMG_1.jpg') }}" alt="" class="col">
+        <img src="{{ asset('image/IMG_1.jpg') }}" alt="" class="col">
+    </div>
+
+    <div class="row w-75 mx-auto">
+        <h2>WHAT WE DO:</h2>
+        {% include '_layouts/_list.html.twig' %}
+    </div>
+
+    <div class="row w-75 mx-auto mb-5">
+        <h2>OUR COMMITMENT TO QUALITY</h2>
+        <p>In the field of electrical service and site upgrades, shortcuts can be disastrous. We work methodically and carefully to make sure every task is done right the first time.</p>
+    </div>
+
+    {% include '_layouts/_info.html.twig' %}
+{% endblock %}
+

@@ -1,0 +1,36 @@
+@import '~bootstrap';
+
+body {
+    background-color: lightgray;
+}
+
+.w-logo-small {
+    width: 80px;
+}
+
+.bg-image-electrical {
+    background-image: url('../image/background-image.jpg');
+    background-position: center;
+}
+
+.bg-pages {
+    background-image: url('../image/bg_pages.jpg');
+    background-position: center;
+}
+
+.bg-electrician {
+    background-image: url('../image/Electricians-Prospect.jpg');
+    background-position: center;
+}
+
+.bg-gray {
+    background-color: rgba(255, 254, 254, 0.69);
+}
+
+.fas {
+    font-size: 80px;
+}
+
+.my-50 {
+    margin: 50vh 0;
+}
