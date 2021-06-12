@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Electricity {% endblock %}
+
+{% block body %}
+    <div class="py-5 bg-electricity">
+        <div class="my-50"></div>
+    </div>
+
+    <div class="row w-75 mx-auto my-5">
+        <div class="col-7">
+            <h4 class="fw-bold">Service Upgrades</h4>
+
+            <p>Older homes often require electrical service upgrades to deal with the increased demand of new appliances or additional electrical requirements that result from renovations. Sometimes a simple electrical panel upgrade is all that is needed but more often than not, your meter socket and grounding system require additional work.</p>
+            <p>As upgrading your electrical power for a renovation project requires several steps you need an experienced team to make sure the work is done correctly.</p>
+            <p>The good news is this: You only have to make one call and Stapleton Electric does all the rest! We have been performing service upgrades for almost 20 years and we can help you every step of the way.</p>
+            <p>The project start with an initial site meeting between our team, the contractor and the homeowner. (If you don’t have a contractor we can recommend one.)</p>
+            <p>We contact BC hydro on you behalf to discuss everything required for a successful electrical panel upgrade.</p>
+
+        </div>
+
+        <div class="col-1 vertical-line"></div>
+
+        <div class="col-4">
+            <h4>Blog Topics</h4>
+
+            {% include '_layouts/_services.html.twig' %}
+        </div>
+    </div>
+
+
+    <div class="w-75 mx-auto">
+        <p><span class="fw-bold">STEP ONE:</span> you Contact BC Hydro and inform them that you will be accepting additional electrical charges.</p>
+
+        <p><span class="fw-bold">STEP TWO:</span> We take care of everything else:</p>
+
+        <ul>
+            <li>Apply for authorizations & permits</li>
+            <li>Installation of poles and service gear</li>
+            <li>Arrange site inspection</li>
+            <li>Obtain BC Hydro authorization number</li>
+        </ul>
+
+        <p>Be sure to contact us if you require emergency service (ie. repair of damaged power poles or electrical lines due to work vehicle mishaps on the jobsite.)</p>
+
+
+        <div class="row">
+            <img class="col" src="{{ asset('image/carousel.jpg') }}" alt="">
+            <img class="col" src="{{ asset('image/carousel.jpg') }}" alt="">
+            <img class="col" src="{{ asset('image/carousel.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="my-5">
+        {% include '_layouts/_info.html.twig' %}
+    </div>
+{% endblock %}

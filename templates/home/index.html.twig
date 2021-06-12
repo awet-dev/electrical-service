@@ -7,51 +7,49 @@
         <div class="w-75 my-4 mx-auto bg-gray p-5 rounded">
             <h2 class="text-center p-5 fw-bolder">Quality Workmanship And Electrical Expertise You Can Count On!</h2>
         </div>
-        <div class="">
-            <div class="d-flex justify-content-center mx-auto">
-                <button class="btn btn-info m-2">CALL 778-985-9395</button>
-                <button class="btn btn-info m-2">EMAIL US TODAY!</button>
-            </div>
+        <div class="d-flex justify-content-center mx-auto">
+            <a class="btn btn-info m-2" href="tel:+1123-456-7890">Call 123-456-7890</a>
+            <a class="btn btn-info m-2" href="mailto:email@example.com">Send Email Today</a>
         </div>
     </div>
 
     <div class="row py-5 px-5">
         <div class="col-xl card text-center m-1">
             <div class="card-header">
-                <i class="fas fa-plug"></i>
+                <a class="fas fa-plug text-decoration-none text-dark" href="{{ path('residential') }}"></a>
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    <a class="text-decoration-none" href="">RESIDENTIAL</a>
+                    <a class="text-decoration-none" href="{{ path('residential') }}">RESIDENTIAL</a>
                 </h5>
                 <p class="card-text">We provide superior craftsmanship and quality to ensure your safety.</p>
-                <a href="#" class="btn btn-info">Read More</a>
+                <a href="{{ path('residential') }}" class="btn btn-info">Read More</a>
             </div>
         </div>
 
         <div class="col-xl card text-center m-1">
             <div class="card-header">
-                <i class="fas fa-charging-station"></i>
+                <a href="{{ path('compliance') }}" class="fas fa-charging-station text-decoration-none text-dark"></a>
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    <a class="text-decoration-none" href="">CODE COMPLIANCE</a>
+                    <a class="text-decoration-none" href="{{ path('compliance') }}">CODE COMPLIANCE</a>
                 </h5>
                 <p class="card-text">Electrical code compliance is fluid. We can give your home an electrical checkup.</p>
-                <a href="#" class="btn btn-info">Read More</a>
+                <a href="{{ path('compliance') }}" class="btn btn-info">Read More</a>
             </div>
         </div>
 
         <div class="col-xl card text-center m-1">
             <div class="card-header">
-                <i class="fas fa-car-battery"></i>
+                <a href="{{ path('electricity') }}" class="fas fa-car-battery text-dark text-decoration-none"></a>
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    <a class="text-decoration-none" href="">ELECTRICAL UPGRADES</a>
+                    <a class="text-decoration-none" href="{{ path('electricity') }}">ELECTRICAL UPGRADES</a>
                 </h5>
                 <p class="card-text">Upgrades to exterior lighting can actually increase the value of your home!</p>
-                <a href="#" class="btn btn-info">Read More</a>
+                <a href="{{ path('electricity') }}" class="btn btn-info">Read More</a>
             </div>
         </div>
 

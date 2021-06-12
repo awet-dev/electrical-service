@@ -1,5 +1,6 @@
 @import '~bootstrap';
 
+
 body {
     background-color: lightgray;
 }
@@ -21,6 +22,21 @@ body {
 .bg-electrician {
     background-image: url('../image/Electricians-Prospect.jpg');
     background-position: center;
+}
+
+.bg-compliance {
+    background-image: url('../image/code_compliance.jpg');
+    background-position: center;
+}
+
+.bg-electricity {
+    background-image: url('../image/maintenance.jpg');
+    background-position: center;
+}
+
+.vertical-line {
+    border-left: 6px solid green;
+    height: 500px;
 }
 
 .bg-gray {

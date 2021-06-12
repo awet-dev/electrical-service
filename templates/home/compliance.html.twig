@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} About {% endblock %}
+
+{% block body %}
+    <div class="py-5 bg-compliance">
+        <div class="my-50"></div>
+    </div>
+
+    <div class="row w-75 mx-auto my-5">
+        <div class="col-7">
+            <h4 class="fw-bold">CODE COMPLIANCE</h4>
+
+            <p>At Stapleton Electric Inc. we adhere to and comply with the Canadian Electrical Code on every project we work on. And we believe it is our responsibility to educate clients on electoral installations that do not meet today’s standard.</p>
+            <p>Electrical wiring in Canada follows regulations and standards for installation of building wiring and the purpose of the Canadian Electrical code is to protect persons and property from endangerment due to electrical malfunctions. Because electrical code compliance is forever fluid, what was valid yesterday is not necessarily compliant with today’s minimum standards.</p>
+            <p>For example, kitchens that were wired 10 years ago or more, do not meet today’s electrical standard and or could be considered unsafe. We recommend our HOMESAFE INSPECTION PACKAGE – where we give your residence an electrical check-up!</p>
+            <p>You’ll sleep better at night knowing you and your family are safe, and protected by the latest home wiring advances.</p>
+        </div>
+
+        <div class="col-1 vertical-line"></div>
+
+        <div class="col-4">
+            <h4>Blog Topics</h4>
+
+            {% include '_layouts/_services.html.twig' %}
+        </div>
+
+    </div>
+
+    <div class="w-75 mx-auto">
+        <ol class="">
+            <h4>Some common electrical codes of interest are as follows:</h4>
+
+            <li>Most countertops receptacles must be GFCI.</li>
+            <li>There can be no receptacles more than 20 inches above countertops. (Exceptions are for the physically handicapped and for islands or peninsulas where this is not possible).</li>
+            <li>There should be receptacles above all countertops that are 12 inches or wider.</li>
+            <li>No face-up receptacles.</li>
+            <li>At least one receptacle should be located on islands or peninsulas.</li>
+        </ol>
+
+        <ol>
+            <h4>BATHROOMS</h4>
+
+            <li>You can only install GFCI (ground fault current interrupter) receptacles in bathrooms.</li>
+            <li>There must be a receptacle within 3 feet of the outside edge of sink basin.</li>
+            <li>No receptacles face-up on countertops.</li>
+            <li>Because some receptacles power high-wattage devices like hair dryers, there must be at least one separate 20 amp. branch circuit.</li>
+        </ol>
+
+        <ol>
+            <h4>GENERAL ROOMS</h4>
+            <li>There should be wall receptacles every 12 feet.</li>
+            <li>Receptacles should be on any wall space that is more than 24 inches wide.</li>
+            <li>Hallways more than 10 feet in length must have at least one receptacle.</li>
+        </ol>
+
+        <h4 class="w-75 text-center">we adhere to and comply with the Canadian Electrical Code on every project we work on.</h4>
+
+    </div>
+
+    <div class="my-5">
+        {% include '_layouts/_info.html.twig' %}
+    </div>
+{% endblock %}

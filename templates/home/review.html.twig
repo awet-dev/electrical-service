@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Residential Wiring {% endblock %}
+
+{% block body %}
+
+    <div class="w-75 mx-auto">
+
+        {% for key, review in reviews %}
+            {{ key }}: {{ review }}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -31,4 +31,31 @@ class HomeController extends AbstractController
     {
         return $this->render('home/residential.html.twig');
     }
+
+
+    #[Route('/compliance', name: 'compliance')]
+    public function compliance(): Response
+    {
+        return $this->render('home/compliance.html.twig');
+    }
+
+    #[Route('/register', name: 'register')]
+    public function register(): Response
+    {
+        return $this->render('home/registration.html.twig');
+    }
+
+    #[Route('/electricity', name: 'electricity')]
+    public function electricity(): Response
+    {
+        return $this->render('home/electrical.html.twig');
+    }
+
+    #[Route('/review', name: 'review')]
+    public function review(): Response
+    {
+        return $this->render('home/review.html.twig', [
+            'reviews' => ['this is first review', 'this is second review' , 'this is third review']
+        ]);
+    }
 }

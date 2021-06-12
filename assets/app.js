@@ -12,3 +12,5 @@ import './styles/app.css';
 import './bootstrap';
 
 import 'bootstrap'
+
+import './js/interactive'

@@ -3,14 +3,16 @@
     <div class="container-fluid d-flex justify-content-between px-5">
 
         <div class="logo">
+            <a href="{{ path('home') }}">
                 <img class="w-logo-small" src="{{ asset('image/logo.png') }}" alt="logo">
+            </a>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <ul class="collapse navbar-collapse nav justify-content-end">
+        <ul class="collapse navbar-collapse nav justify-content-end fw-bold">
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Home</a>
@@ -21,9 +23,9 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{ path('residential') }}">Residential Wiring</a></li>
-                    <li><a class="dropdown-item" href="#">Code Compliance</a></li>
+                    <li><a class="dropdown-item" href="{{ path('compliance') }}">Code Compliance</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">landscape-lighting</a></li>
+                    <li><a class="dropdown-item" href="{{ path('electricity') }}">landscape-lighting</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -33,6 +35,10 @@
                 <a class="nav-link" href="{{ path('contact') }}">Contact</a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('register') }}">Sign Up</a>
+            </li>
         </ul>
 
     </div>
