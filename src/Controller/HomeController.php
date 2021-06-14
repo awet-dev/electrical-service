@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -28,7 +31,7 @@ class HomeController extends AbstractController
         return $this->render('home/contact.html.twig');
     }
 
-    #[Route('/residential-wiring', name: 'residential')]
+    #[Route('/residential', name: 'residential')]
     public function residential(): Response
     {
         return $this->render('home/residential.html.twig');
@@ -71,12 +74,62 @@ class HomeController extends AbstractController
         return $this->render('home/electrical.html.twig');
     }
 
-    #[Route('/review', name: 'review')]
+    #[Route('/', name: 'home')]
     public function review(): Response
     {
-        return $this->render('home/review.html.twig', [
-            'reviews' => ['this is first review', 'this is second review' , 'this is third review']
+        $repository = $this->getDoctrine()->getRepository(Review::class);
+
+        $reviews = $repository->findAll();
+
+        return $this->render('home/index.html.twig', [
+            'reviews' => $reviews
         ]);
+    }
+
+    #[Route('/email', name: 'email')]
+    public function sendEmail(MailerInterface $mailer, Request $request): Response
+    {
+        if ($request->isMethod('POST')) {
+            $email = (new Email())
+                ->from($request->get('email'))
+                ->to('you@example.com')
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject($request->get('name'))
+                ->text($request->get('message'));
+            // ->html('<p>See Twig integration for better HTML integration!</p>');
+
+            $mailer->send($email);
+        }
+
+        return $this->render('home/contact.html.twig');
+    }
+
+    #[Route('/add_review', name: 'add_review')]
+    public function addReview(Request $request): Response
+    {
+        if ($request->isMethod('POST')) {
+            $review = new Review();
+
+            $review->setName($request->get('name'));
+            $review->setEmail($request->get('email'));
+            $review->setReview($request->get('review'));
+
+            if ($this->getUser()) {
+                $review->setUser($this->getUser());
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->persist($review);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->redirectToRoute('home');
     }
 
 }

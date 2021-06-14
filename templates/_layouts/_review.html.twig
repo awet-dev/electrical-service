@@ -1,42 +1,13 @@
 <div class="py-5 bg-light">
     <div class="row w-75 mx-auto my-4">
         <div class="col">
-            <p> Boa badge Best of 2020 – winner 1 times
-                Home Wiring Upgrade
-                10/10
-            </p>
 
-            <p>Our 80-year-old East Van bungalow had a mish-mash of wiring: some original, s...
-                Gordon G.
-                Mar 18, 2021
-                Living room rewiring, pot lights, doorbell...
-                10/10
-            </p>
-
-            <p>
-                Great workers, great job! Would have them back to our place for additional w...
-                Mcandless
-                Apr 29, 2020
-                Friendly, efficient, and great ideas to li...
-                10/10
-            </p>
-
-            <p>
-                Crystal was so helpful in the planning stages - she sent lots of photos of po...
-                Kelly in Richmond
-                Nov 30, 2019
-                Install pot lights
-                10/10
-            </p>
-
-            <p>
-                Troubleshoot and repair of lighting system - Stapleton Electric was amazing. ...
-                Numinus H.
-                Oct 31, 2019
-            </p>
+            {% for review in reviews %}
+                <p>{{ review.review }}</p>
+            {% endfor %}
 
             <div class="row w-75 mx-auto">
-                <a class="col d-block btn btn-info m-1" href="{{ path('review') }}">Read more review</a>
+                <a class="col d-block btn btn-info m-1" href="{{ path('home') }}">Read more review</a>
                 <button type="button" class="col d-block btn btn-info m-1" id="addReview">Add Review</button>
             </div>
         </div>
@@ -52,22 +23,22 @@
 
     <div class="w-75 mx-auto my-5">
 
-        <form action="" id="formReview" class="d-none">
+        <form action="{{ path('add_review') }}" method="post" id="formReview" class="d-none">
             <div class="row py-1">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                    <input name="name" type="text" class="form-control" placeholder="Name" aria-label="Name">
                 </div>
                 <div class="col">
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                    <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email">
                 </div>
             </div>
 
             <div class="input-group my-1">
-                <textarea class="form-control" placeholder="Add Review" aria-label="With textarea"></textarea>
+                <textarea name="review" class="form-control" placeholder="Add Review" aria-label="With textarea"></textarea>
             </div>
 
             <div class="d-grid gap-2 py-1">
-                <button class="btn btn-primary" type="button">Add Review</button>
+                <button class="btn btn-primary" type="submit">Add Review</button>
             </div>
         </form>
     </div>
@@ -80,5 +51,4 @@
     addReview.addEventListener("click", function () {
         formReview.classList.toggle("d-none")
     })
-
 </script>
