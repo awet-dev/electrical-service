@@ -11,7 +11,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class PagesController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function index(): Response
@@ -44,29 +44,6 @@ class HomeController extends AbstractController
         return $this->render('home/compliance.html.twig');
     }
 
-    #[Route('/register', name: 'register')]
-    public function register(Request $request, ): Response
-    {
-        if ($request->isMethod('POST')) {
-            $user = new User();
-
-            $user->setFirstName($request->get('firstName'));
-            $user->setLastName($request->get('lastName'));
-            $user->setEmail($request->get('email'));
-            $user->setPassword($request->get('password'));
-            $user->setTelNumber($request->get('telNumber'));
-            $user->setAddress($request->get('address'));
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin');
-        }
-
-        return $this->render('home/registration.html.twig');
-    }
 
     #[Route('/electricity', name: 'electricity')]
     public function electricity(): Response
@@ -107,29 +84,6 @@ class HomeController extends AbstractController
         return $this->render('home/contact.html.twig');
     }
 
-    #[Route('/add_review', name: 'add_review')]
-    public function addReview(Request $request): Response
-    {
-        if ($request->isMethod('POST')) {
-            $review = new Review();
 
-            $review->setName($request->get('name'));
-            $review->setEmail($request->get('email'));
-            $review->setReview($request->get('review'));
-
-            if ($this->getUser()) {
-                $review->setUser($this->getUser());
-            }
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $entityManager->persist($review);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('home');
-        }
-
-        return $this->redirectToRoute('home');
-    }
 
 }

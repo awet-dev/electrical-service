@@ -77,10 +77,6 @@
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
-                <!-- Register buttons -->
-                <div class="text-center">
-                    <p>Not a member? <a href="#!">Register</a></p>
-                </div>
             </form>
         </div>
 
@@ -90,55 +86,7 @@
                 role="tabpanel"
                 aria-labelledby="tab-register"
         >
-            <form action="{{ path('register') }}" method="post">
-
-                <div class="row">
-
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="firstName" type="text" id="firstName" placeholder="First Name" class="form-control" />
-                    </div>
-
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="lastName" type="text" id="lastName" placeholder="Last Name" class="form-control" />
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="email" type="email" id="email" placeholder="Email" class="form-control" />
-                    </div>
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="password" type="password" id="Password" placeholder="Password" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="telNumber" type="tel" id="telephone" placeholder="Telephone" class="form-control" />
-                    </div>
-
-                    <div class="form-outline mb-4 col mr-1 col">
-                        <input name="address" type="text" id="address" placeholder="Address" class="form-control" />
-                    </div>
-
-                </div>
-
-                <div class="form-check d-flex justify-content-center mb-4">
-                    <input
-                            class="form-check-input me-2"
-                            type="checkbox"
-                            id="registerCheck"
-                            aria-describedby="registerCheckHelpText"
-                    />
-                    <label class="form-check-label" for="registerCheck">
-                        I have read and agree to the terms
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
-            </form>
+            {% include 'registration/register.html.twig' %}
         </div>
     </div>
 
