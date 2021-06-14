@@ -40,7 +40,7 @@ class SecurityController extends AbstractController
             'csrf_token_intention' => 'authenticate',
 
             // the URL users are redirected to after the login (default: '/admin')
-            'target_path' => $this->generateUrl('admin'),
+            'target_path' => $this->generateUrl($this->getRoute()),
 
             // the label displayed for the username form field (the |trans filter is applied to it)
             'username_label' => 'Your Email',
@@ -78,5 +78,15 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+
+    public function getRoute(): string
+    {
+        if ($this->getUser() && in_array("ROLE_ADD", $this->getUser()->getRoles())) {
+            return 'admin';
+        } else {
+            return 'home';
+        }
     }
 }

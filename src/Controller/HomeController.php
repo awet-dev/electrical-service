@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -40,8 +42,26 @@ class HomeController extends AbstractController
     }
 
     #[Route('/register', name: 'register')]
-    public function register(): Response
+    public function register(Request $request, ): Response
     {
+        if ($request->isMethod('POST')) {
+            $user = new User();
+
+            $user->setFirstName($request->get('firstName'));
+            $user->setLastName($request->get('lastName'));
+            $user->setEmail($request->get('email'));
+            $user->setPassword($request->get('password'));
+            $user->setTelNumber($request->get('telNumber'));
+            $user->setAddress($request->get('address'));
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin');
+        }
+
         return $this->render('home/registration.html.twig');
     }
 
@@ -58,4 +78,5 @@ class HomeController extends AbstractController
             'reviews' => ['this is first review', 'this is second review' , 'this is third review']
         ]);
     }
+
 }
