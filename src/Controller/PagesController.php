@@ -16,7 +16,9 @@ class PagesController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
+        return $this->render('home/index.html.twig', [
+            'reviews' => $this->review()
+        ]);
     }
 
     #[Route('/about', name: 'about')]
@@ -51,16 +53,12 @@ class PagesController extends AbstractController
         return $this->render('home/electrical.html.twig');
     }
 
-    #[Route('/', name: 'home')]
-    public function review(): Response
+    public function review(): array
     {
         $repository = $this->getDoctrine()->getRepository(Review::class);
-
         $reviews = $repository->findAll();
 
-        return $this->render('home/index.html.twig', [
-            'reviews' => $reviews
-        ]);
+        return array_slice($reviews, -5);
     }
 
     #[Route('/email', name: 'email')]
