@@ -30,6 +30,7 @@ class AttendanceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $attendance->setUser($this->getUser());
             $entityManager->persist($attendance);
             $entityManager->flush();
 
