@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
@@ -28,6 +29,12 @@ class UserCrudController extends AbstractCrudController
             TelephoneField::new('telNumber'),
             TextField::new('address')
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW);
     }
 
 }
